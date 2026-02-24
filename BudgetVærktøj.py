@@ -1,21 +1,29 @@
 
 indtægter = int(input("Denne måneds indtægter: "))
-mad = int(input("Denne måneds udgifter for mad: "))
-transport = int(input("Denne måneds udgifter for transport: "))
-fornøjelser = int(input("Denne måneds udgifter for fornøjelser: "))
 
-def over_underskud(indtægter, mad, transport, fornøjelser):
-    total = indtægter - mad - transport - fornøjelser
+udgifter = {
+    "transport":400,
+    "mad":600,
+    "fornøjelser":100
+}
+
+def over_underskud(indtægter, udgifter):
+
+    total = indtægter
+
     if total <= 0:
         print("I denne måned er du " + str(total) + " i underskud")
     else:
         print("I denne måned har du " + str(total) + " i overskud")
     return
 
-def størst_udgift(mad,transport,fornøjelser):
-    if mad>transport:
-        print("Du har brugt flest penge på mad")
+def størst_udgift(udgifter):
+    højest = udgifter[0]
+    for kategori in udgifter:
+        if udgifter[kategori]>udgifter[højest]:
+            højest = kategori
+        print("Du har brugt flest penge på " + højest)
 
 
-print(over_underskud(indtægter,mad, transport, fornøjelser))
+print(over_underskud(indtægter, udgifter), størst_udgift(udgifter))
 
