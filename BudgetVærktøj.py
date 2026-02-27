@@ -2,10 +2,18 @@
 indtægter = int(input("Denne måneds indtægter: "))
 
 udgifter = {
-    "transport":400,
-    "mad":600,
-    "fornøjelser":100
+    "transport":0,
+    "mad":0,
+    "fornøjelser":0
 }
+
+
+
+def tilføj_udgift(beløb,kategori):
+    if not kategori in udgifter:
+        udgifter[kategori] = 0
+    udgifter[kategori] += beløb
+    return udgifter
 
 def over_underskud(indtægter, udgifter):
 
@@ -21,6 +29,13 @@ def størst_udgift(udgifter):
     return højest
 
 if __name__ == '__main__':
+    menuvalg = None
+    while menuvalg != 'stop':
+        nyt_beløb = int(input('beløb?'))
+        ny_kategori = input('kat?')
+        tilføj_udgift(nyt_beløb, ny_kategori)
+        menuvalg = input('vælg')
+
     total=over_underskud(indtægter,udgifter)
 
     if total <= 0:
@@ -28,5 +43,5 @@ if __name__ == '__main__':
     else:
         print("I denne måned har du " + str(total) + " i overskud")
 
-print(over_underskud(indtægter, udgifter))
-print("Du har brugt flest penge på",størst_udgift(udgifter))
+    print("Du har brugt flest penge på", størst_udgift(udgifter))
+
