@@ -1,10 +1,7 @@
 # Her laves der en input i forhold til indtægter, hvor den spørger brugeren af programmet "Denne måneds indtæger"
-indtægter = int(input("Denne måneds indtægter: "))
+indtægter = float(input("Denne måneds indtægter: "))
 #Her laves der en dictionary med de forskellige udgifter som er "transport, mad og fornøjelser"
 udgifter = {
-    "transport":0,
-    "mad":0,
-    "fornøjelser":0
 }
 
 
@@ -20,7 +17,7 @@ def over_underskud(indtægter, udgifter):
     return indtægter-sum(udgifter.values())
 
 
-# Denne funktion bestemmer den højeste udgift
+# Denne funktion bestemmer den højeste udgift.
 def størst_udgift(udgifter):
     højest = list(udgifter.keys())[0]
     for kategori in udgifter:
@@ -33,9 +30,9 @@ if __name__ == '__main__':
     menuvalg = None
     while menuvalg != 'stop':
         ny_kategori = input('Kategori? ')
-        nyt_beløb = int(input('Beløbet på din katoegori '))
+        nyt_beløb = float(input('Beløbet på din kategori '))
         tilføj_udgift(nyt_beløb, ny_kategori)
-        menuvalg = input('Skriv en ny kategori eller stop ')
+        menuvalg = input('Er der flere kategori, hvis ikke skriv stop ')
 
     # Her bliver total defineret
     total=over_underskud(indtægter,udgifter)
